@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>窗帘计算</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+
+<br>客厅窗帘2.78m
+‌<br>主卧窗帘2.88m
+<br>‌阳光房窗帘2.9+1.54+3=7.44m
+<br>
+‌<br>阳光房拉帘2.1m
+‌<br>卫生间帘78cm
+<br>‌厨房窗户拉帘，窗户102*85
+
+<form action="">
+*窗帘长度倍数:<br>
+<input type="text" name="times" id="times" value="1或1.5或2" onFocus="if(value==defaultValue){value='';this.style.color='#000'}" onBlur="if(!value){value=defaultValue;this.style.color='#999'}" style="color:#999999">
+</br>
+遮光度:(暂不计算)<br>
+<input type="text" name="perc" id="perc" value="70或80或90" onFocus="if(value==defaultValue){value='';this.style.color='#000'}" onBlur="if(!value){value=defaultValue;this.style.color='#999'}" style="color:#999999">%
+</br>
+<br>
+*窗帘布单价：<input type="text" name="money" id="money" value="">元
+</br>
+<br>
+*窗帘纱单价：<input type="text" name="mon" id="mon" value="">元
+</br>
+<br>
+加工费：<input type="text" name="jiagong" id="jiagong" value="">元（每米）
+</br>
+<br>
+辅料费：<input type="text" name="fuliao" id="fuliao" value="">元（共计）
+</br>
+<br>
+安装费：<input type="text" name="anzhuang" id="anzhuang" value="">元（共计）
+</br>
+</form>
+<button id="bt">提交</button>
+</body>
+
+<script>
+var firstname = document.getElementById("bt");
+bt.onclick = function(){
+	var times = document.getElementById("times").value;
+	var perc = document.getElementById("perc").value;
+	var money = document.getElementById("money").value;
+	var mon = document.getElementById("mon").value;
+	var jiagong = document.getElementById("jiagong").value;
+	var fuliao = document.getElementById("fuliao").value;
+	var anzhuang = document.getElementById("anzhuang").value;
+	if(jiagong==null||jiagong==""){
+		jiagong=0;
+	}
+	if(fuliao==null||fuliao==""){
+		fuliao=0;
+	}
+	if(anzhuang==null||anzhuang==""){
+		anzhuang=0;
+	}
+	var result_bu = (2.78+2.88+7.44)*parseFloat(times)*parseFloat(money);
+	var result_sha = (2.78+2.88)*parseFloat(times)*parseFloat(mon);
+	var result_jiagong = (2.78+2.88+7.44+2.78+2.88)*parseFloat(times)*parseFloat(jiagong);
+	var total = parseFloat(result_bu)+parseFloat(result_sha)+parseFloat(result_jiagong)+parseFloat(fuliao)+parseFloat(anzhuang);
+	var result = "窗帘布："+result_bu+",窗帘纱："+result_sha+";加工费："+result_jiagong+";总价："+total;
+	alert(result);
+}
+</script>
+
+</html>
